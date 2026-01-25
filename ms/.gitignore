@@ -1,0 +1,9 @@
+# Rust build folder
+target/
+
+# Node packages
+node_modules/
+
+# Environment files (secrets)
+.env
+*.env

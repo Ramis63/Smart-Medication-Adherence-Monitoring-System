@@ -1,0 +1,6 @@
+RPi.GPIO==0.7.1
+adafruit-circuitpython-max30102==2.3.7
+adafruit-circuitpython-mlx90614==2.1.1
+adafruit-blinka==8.20.0
+w1thermsensor==2.3.0
+

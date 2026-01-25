@@ -1,0 +1,10 @@
+backend/target/
+backend/.env
+*.db
+*.db-shm
+*.db-wal
+.git
+.gitignore
+__pycache__/
+*.pyc
+

@@ -1,0 +1,160 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+nav {
+    background: #f5f5f5;
+    padding: 0;
+    display: flex;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.nav-btn {
+    flex: 1;
+    padding: 15px 20px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 1em;
+    transition: all 0.3s;
+    border-bottom: 3px solid transparent;
+}
+
+.nav-btn:hover {
+    background: #e8e8e8;
+}
+
+.nav-btn.active {
+    background: white;
+    border-bottom-color: #667eea;
+    color: #667eea;
+    font-weight: bold;
+}
+
+main {
+    padding: 30px;
+}
+
+.view {
+    display: none;
+}
+
+.view.active {
+    display: block;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.stat-card h3 {
+    font-size: 0.9em;
+    opacity: 0.9;
+    margin-bottom: 10px;
+}
+
+.stat-card p {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+#dashboard-charts,
+#medication-timeline,
+#medication-stats,
+#temperature-chart,
+#heartrate-chart,
+#combined-timeline {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    min-height: 400px;
+}
+
+footer {
+    background: #f5f5f5;
+    padding: 20px;
+    text-align: center;
+    color: #666;
+    border-top: 1px solid #e0e0e0;
+}
+
+/* Chart styling */
+.axis {
+    font-size: 12px;
+}
+
+.axis-label {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.grid-line {
+    stroke: #e0e0e0;
+    stroke-width: 1;
+}
+
+.data-line {
+    fill: none;
+    stroke-width: 2;
+}
+
+.tooltip {
+    position: absolute;
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    pointer-events: none;
+    font-size: 12px;
+}
+
+

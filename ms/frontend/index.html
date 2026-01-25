@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedHealth - Interactive Healthcare Data Visualization</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>💊 MedHealth Dashboard</h1>
+            <p>Interactive Healthcare Data Visualization</p>
+        </header>
+
+        <nav>
+            <button class="nav-btn active" data-view="dashboard">Dashboard</button>
+            <button class="nav-btn" data-view="medications">Medications</button>
+            <button class="nav-btn" data-view="vitals">Vital Signs</button>
+            <button class="nav-btn" data-view="timeline">Timeline</button>
+        </nav>
+
+        <main>
+            <!-- Dashboard View -->
+            <div id="dashboard-view" class="view active">
+                <h2>📊 Dashboard Overview</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Active Medications</h3>
+                        <p id="active-meds-count">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Medications Taken Today</h3>
+                        <p id="taken-today">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Current Temperature</h3>
+                        <p id="current-temp">--°C</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Current Heart Rate</h3>
+                        <p id="current-hr">-- bpm</p>
+                    </div>
+                </div>
+                <div id="dashboard-charts"></div>
+            </div>
+
+            <!-- Medications View -->
+            <div id="medications-view" class="view">
+                <h2>💊 Medication Adherence</h2>
+                <div id="medication-timeline"></div>
+                <div id="medication-stats"></div>
+            </div>
+
+            <!-- Vital Signs View -->
+            <div id="vitals-view" class="view">
+                <h2>📈 Vital Signs Monitoring</h2>
+                <div id="temperature-chart"></div>
+                <div id="heartrate-chart"></div>
+            </div>
+
+            <!-- Timeline View -->
+            <div id="timeline-view" class="view">
+                <h2>⏰ Combined Timeline</h2>
+                <div id="combined-timeline"></div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Real-time data visualization powered by d3.js | FHIR-compliant backend</p>
+        </footer>
+    </div>
+
+    <script src="js/sanitize.js"></script>
+    <script src="js/websocket.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
+
+

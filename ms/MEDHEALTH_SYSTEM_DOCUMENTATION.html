@@ -1,0 +1,1239 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Smart Medication Adherence and Health Monitoring System - Complete Documentation</title>
+        <style>
+            @media print {
+                @page {
+                    size: A4;
+                    margin: 2cm;
+                }
+                body {
+                    font-size: 11pt;
+                }
+                h1 {
+                    page-break-after: avoid;
+                }
+                h2 {
+                    page-break-after: avoid;
+                }
+                table {
+                    page-break-inside: avoid;
+                }
+            }
+            
+            body {
+                font-family: 'Segoe UI', Arial, sans-serif;
+                line-height: 1.6;
+                margin: 40px;
+                color: #333;
+                max-width: 900px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+            
+            h1 {
+                color: #2c3e50;
+                border-bottom: 4px solid #3498db;
+                padding-bottom: 15px;
+                margin-top: 0;
+                font-size: 28px;
+            }
+            
+            h2 {
+                color: #34495e;
+                border-bottom: 2px solid #95a5a6;
+                padding-bottom: 8px;
+                margin-top: 35px;
+                font-size: 22px;
+                page-break-after: avoid;
+            }
+            
+            h3 {
+                color: #555;
+                margin-top: 25px;
+                font-size: 18px;
+            }
+            
+            h4 {
+                color: #666;
+                margin-top: 20px;
+                font-size: 16px;
+            }
+            
+            table {
+                border-collapse: collapse;
+                width: 100%;
+                margin: 20px 0;
+                font-size: 14px;
+                page-break-inside: avoid;
+            }
+            
+            th, td {
+                border: 1px solid #ddd;
+                padding: 12px;
+                text-align: left;
+            }
+            
+            th {
+                background-color: #3498db;
+                color: white;
+                font-weight: bold;
+            }
+            
+            tr:nth-child(even) {
+                background-color: #f8f9fa;
+            }
+            
+            code {
+                background-color: #f4f4f4;
+                padding: 3px 8px;
+                border-radius: 3px;
+                font-family: 'Courier New', 'Consolas', monospace;
+                font-size: 13px;
+                border: 1px solid #e0e0e0;
+            }
+            
+            pre {
+                background-color: #f4f4f4;
+                padding: 15px;
+                border-radius: 5px;
+                overflow-x: auto;
+                border: 1px solid #e0e0e0;
+                font-size: 12px;
+            }
+            
+            pre code {
+                background-color: transparent;
+                padding: 0;
+                border: none;
+            }
+            
+            blockquote {
+                border-left: 4px solid #3498db;
+                margin: 20px 0;
+                padding-left: 20px;
+                color: #555;
+                font-style: italic;
+                background-color: #f8f9fa;
+                padding: 15px 20px;
+            }
+            
+            ul, ol {
+                margin: 15px 0;
+                padding-left: 35px;
+            }
+            
+            li {
+                margin: 8px 0;
+            }
+            
+            p {
+                margin: 12px 0;
+            }
+            
+            strong {
+                color: #2c3e50;
+            }
+            
+            .page-break {
+                page-break-after: always;
+            }
+            
+            hr {
+                border: none;
+                border-top: 2px solid #ecf0f1;
+                margin: 30px 0;
+            }
+            
+            .warning {
+                background-color: #fff3cd;
+                border-left: 4px solid #ffc107;
+                padding: 15px;
+                margin: 20px 0;
+            }
+            
+            .info {
+                background-color: #d1ecf1;
+                border-left: 4px solid #17a2b8;
+                padding: 15px;
+                margin: 20px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Smart Medication Adherence and Health Monitoring System</h1>
+<h2>Complete Documentation &amp; Setup Guide</h2>
+<hr />
+<p><strong>Project:</strong> Smart Medication Adherence and Health Monitoring System<br />
+<strong>Platform:</strong> Raspberry Pi 3<br />
+<strong>Purpose:</strong> Educational Health Informatics Tool<br />
+<strong>Version:</strong> 3.0 (Independent Alarm System &amp; Enhanced Features)</p>
+<hr />
+<h2>Table of Contents</h2>
+<ol>
+<li><a href="#project-overview">Project Overview</a></li>
+<li><a href="#system-features">System Features</a></li>
+<li><a href="#hardware-components">Hardware Components</a></li>
+<li><a href="#wiring-instructions">Wiring Instructions</a></li>
+<li><a href="#software-installation">Software Installation</a></li>
+<li><a href="#system-workflow">System Workflow</a></li>
+<li><a href="#technical-specifications">Technical Specifications</a></li>
+<li><a href="#safety--medical-disclaimer">Safety &amp; Medical Disclaimer</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+</ol>
+<hr />
+<h2>Project Overview</h2>
+<p>The Smart Medication Adherence and Health Monitoring System is a Raspberry Pi 3-based solution designed to help users maintain regular medication intake while observing basic personal health parameters. The system provides:</p>
+<ul>
+<li><strong>Timed medication reminders</strong> using visual (LED) and audio (buzzer) alerts</li>
+<li><strong>Medication intake confirmation</strong> via button press with automatic logging</li>
+<li><strong>Continuous vital signs monitoring</strong> (body temperature and heart rate)</li>
+<li><strong>Automatic health alerts</strong> when vital signs are abnormal</li>
+<li><strong>Data visualization</strong> through stored logs and history</li>
+</ul>
+<p><strong>Important:</strong> This system focuses solely on observation and monitoring for personal health awareness. It does NOT provide medical diagnosis or treatment, making it a low-cost, practical, and educational Health Informatics tool.</p>
+<hr />
+<h2>System Features</h2>
+<h3>Core Functionality</h3>
+<ol>
+<li><strong>Medication Management</strong></li>
+<li>Add medications with scheduled times (HH:MM format)</li>
+<li>View all active medications</li>
+<li>Delete medications from schedule</li>
+<li>
+<p>Automatic duplicate prevention (one alarm per day per medication)</p>
+</li>
+<li>
+<p><strong>Independent Smart Alarm System</strong> ⭐ NEW</p>
+</li>
+<li><strong>Runs automatically</strong> - No need to start monitoring for alarms</li>
+<li>Visual alerts: Blue LED blinking near button</li>
+<li>Audio alerts: Buzzer sounds with PWM for clear tone</li>
+<li>Checks every 5 seconds for accurate timing</li>
+<li>30-second time window (catches alarms even if check happens slightly before/after)</li>
+<li>60-second alarm duration</li>
+<li>Button press to confirm intake</li>
+<li>2-second continuous beep + Blue LED ON when medication taken (confirmation)</li>
+<li>
+<p>Works independently of "Start Monitoring" option</p>
+</li>
+<li>
+<p><strong>Vital Signs Monitoring</strong></p>
+</li>
+<li><strong>Body Temperature</strong>: Measured using DS18B20 sensor (°C)</li>
+<li><strong>Heart Rate</strong>: Measured using MAX30102 sensor (BPM)</li>
+<li>Continuous monitoring every 10 seconds</li>
+<li>
+<p>Manual measurement option available</p>
+</li>
+<li>
+<p><strong>Health Alerts</strong></p>
+</li>
+<li><strong>Temperature Abnormal</strong>: &lt; 18°C or &gt; 30°C<ul>
+<li>Red LED (near temp sensor) blinks</li>
+<li>Buzzer sounds</li>
+</ul>
+</li>
+<li>
+<p><strong>Heart Rate Abnormal</strong>: &lt; 60 bpm or &gt; 120 bpm</p>
+<ul>
+<li>Green LED (near heart sensor) blinks</li>
+<li>Buzzer sounds</li>
+</ul>
+</li>
+<li>
+<p><strong>Data Logging</strong></p>
+</li>
+<li>Medication intake logs with timestamps</li>
+<li>Optional vital signs recorded with medication intake</li>
+<li>View last 20 medication entries</li>
+<li>
+<p>Complete history with scheduled vs actual times</p>
+</li>
+<li>
+<p><strong>User Interface</strong></p>
+</li>
+<li>Clean menu system with 8 options</li>
+<li>Emoji indicators for better UX</li>
+<li>Real-time status updates</li>
+<li>Graceful error handling</li>
+</ol>
+<hr />
+<h2>Hardware Components</h2>
+<h3>Required Components</h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Quantity</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Raspberry Pi 3</td>
+<td>1</td>
+<td>Main controller</td>
+</tr>
+<tr>
+<td>DS18B20 Temperature Sensor</td>
+<td>1</td>
+<td>Body temperature measurement</td>
+</tr>
+<tr>
+<td>MAX30102 Heart Rate Sensor</td>
+<td>1</td>
+<td>Heart rate measurement (BPM)</td>
+</tr>
+<tr>
+<td>Active Buzzer</td>
+<td>1</td>
+<td>Audio alerts (all functions)</td>
+</tr>
+<tr>
+<td>LED (Red)</td>
+<td>1</td>
+<td>Temperature sensor indicator</td>
+</tr>
+<tr>
+<td>LED (Green)</td>
+<td>1</td>
+<td>Heart rate sensor indicator</td>
+</tr>
+<tr>
+<td>LED (Blue)</td>
+<td>1</td>
+<td>Button/medication indicator (near button)</td>
+</tr>
+<tr>
+<td>Push Button</td>
+<td>1</td>
+<td>Medication confirmation</td>
+</tr>
+<tr>
+<td>Resistor 220Ω</td>
+<td>3</td>
+<td>LED current limiting</td>
+</tr>
+<tr>
+<td>Resistor 4.7kΩ</td>
+<td>1</td>
+<td>DS18B20 pull-up</td>
+</tr>
+<tr>
+<td>Breadboard</td>
+<td>1</td>
+<td>Component mounting</td>
+</tr>
+<tr>
+<td>Jumper Wires</td>
+<td>~20</td>
+<td>Connections</td>
+</tr>
+</tbody>
+</table>
+<h3>Component Specifications</h3>
+<p><strong>DS18B20 Temperature Sensor</strong>
+- Interface: 1-Wire
+- Range: -55°C to +125°C
+- Accuracy: ±0.5°C
+- Power: 3.0V to 5.5V</p>
+<p><strong>MAX30102 Heart Rate Sensor</strong>
+- Interface: I2C
+- Measures: Heart rate (BPM), SpO2
+- Power: 3.3V or 5V (check module specs)
+- Sampling rate: Programmable</p>
+<p><strong>Buzzer</strong>
+- Type: Active buzzer (5V)
+- Sound: ~2.5kHz tone
+- Current: ~30mA</p>
+<p><strong>LEDs</strong>
+- Type: Standard 5mm LEDs
+- Current: ~20mA (with 220Ω resistor)
+- Colors: Red (near temperature sensor), Green (near heart sensor), Blue (near button)</p>
+<hr />
+<h2>Wiring Instructions</h2>
+<h3>Physical Pin Numbering</h3>
+<p><strong>IMPORTANT:</strong> This guide uses <strong>Physical Pin Numbers</strong> (not GPIO numbers) as requested.</p>
+<h3>Pin Connection Table</h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Physical Pin</th>
+<th>GPIO Pin</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DS18B20 DATA</td>
+<td><strong>7</strong></td>
+<td>GPIO 4</td>
+<td>1-Wire Data</td>
+</tr>
+<tr>
+<td>MAX30102 SDA</td>
+<td><strong>3</strong></td>
+<td>GPIO 2</td>
+<td>I2C Data</td>
+</tr>
+<tr>
+<td>MAX30102 SCL</td>
+<td><strong>5</strong></td>
+<td>GPIO 3</td>
+<td>I2C Clock</td>
+</tr>
+<tr>
+<td>Buzzer (+)</td>
+<td><strong>11</strong></td>
+<td>GPIO 17</td>
+<td>Output</td>
+</tr>
+<tr>
+<td>Button</td>
+<td><strong>13</strong></td>
+<td>GPIO 27</td>
+<td>Input (Pull-up)</td>
+</tr>
+<tr>
+<td>LED Heart (Green)</td>
+<td><strong>15</strong></td>
+<td>GPIO 22</td>
+<td>Output</td>
+</tr>
+<tr>
+<td>LED Temp (Red)</td>
+<td><strong>16</strong></td>
+<td>GPIO 23</td>
+<td>Output</td>
+</tr>
+<tr>
+<td>LED Button (Blue)</td>
+<td><strong>18</strong></td>
+<td>GPIO 24</td>
+<td>Output</td>
+</tr>
+<tr>
+<td>5V Power</td>
+<td><strong>2</strong></td>
+<td>-</td>
+<td>Power supply</td>
+</tr>
+<tr>
+<td>3.3V Power</td>
+<td><strong>1</strong></td>
+<td>-</td>
+<td>MAX30102 power</td>
+</tr>
+<tr>
+<td>GND</td>
+<td><strong>6</strong></td>
+<td>-</td>
+<td>Common ground</td>
+</tr>
+</tbody>
+</table>
+<h3>Detailed Wiring Steps (64-Row Breadboard)</h3>
+<h4>Step 1: Power Connections</h4>
+<ol>
+<li>Connect <strong>Physical Pin 2 (5V)</strong> to <strong>LEFT power rail (+)</strong></li>
+<li>Connect <strong>Physical Pin 6 (GND)</strong> to <strong>LEFT power rail (-)</strong></li>
+<li><strong>Optional</strong>: Connect left and right power rails together for easier wiring</li>
+</ol>
+<h4>Step 2: DS18B20 Temperature Sensor (Rows 1-4)</h4>
+<p><strong>IMPORTANT:</strong> Each pin must be in a <strong>separate row</strong> because rows connect all columns together.
+<strong>NOTE:</strong> Wire order (soldered): Red (VDD), Black (GND) in middle, Yellow (DATA)</p>
+<ol>
+<li><strong>Row 1, Column A</strong>: VDD (Red wire) → Connect to power rail (+)</li>
+<li><strong>Row 2, Column A</strong>: GND (Black wire) → Connect to power rail (-)</li>
+<li><strong>Row 3, Column A</strong>: DATA (Yellow wire) → Connect to <strong>Physical Pin 7 (GPIO 4)</strong></li>
+<li><strong>Row 4</strong>: Place 4.7kΩ pull-up resistor:</li>
+<li><strong>Column A</strong>: One end of resistor</li>
+<li><strong>Column B</strong>: Other end of resistor → Connect to power rail (+)</li>
+<li><strong>Column C</strong>: Jumper wire to Row 3-A (DATA line)</li>
+</ol>
+<h4>Step 3: MAX30102 Heart Rate Sensor (Rows 6-9)</h4>
+<p><strong>IMPORTANT:</strong> Each pin must be in a <strong>separate row</strong> to avoid short circuits.</p>
+<ol>
+<li><strong>Row 6, Column A</strong>: VIN → Connect to <strong>Physical Pin 1 (3.3V)</strong> or <strong>Pin 2 (5V)</strong></li>
+<li><strong>Row 7, Column A</strong>: GND → Connect to power rail (-)</li>
+<li><strong>Row 8, Column A</strong>: SDA → Connect to <strong>Physical Pin 3 (GPIO 2 / SDA)</strong></li>
+<li><strong>Row 9, Column A</strong>: SCL → Connect to <strong>Physical Pin 5 (GPIO 3 / SCL)</strong></li>
+</ol>
+<h4>Step 4: Green LED - Heart Sensor (Rows 11-13)</h4>
+<p><strong>IMPORTANT:</strong> LED anode and cathode must be in <strong>separate rows</strong> to avoid short circuit.</p>
+<ol>
+<li><strong>Row 11</strong>: Place 220Ω resistor:</li>
+<li><strong>Column A</strong>: One end → Connect to <strong>Physical Pin 15 (GPIO 22)</strong></li>
+<li>
+<p><strong>Column B</strong>: Other end (resistor output)</p>
+</li>
+<li>
+<p><strong>Row 12, Column A</strong>: Green LED Anode (+) (near MAX30102 heart sensor) → Jumper wire to Row 11-B</p>
+</li>
+<li><strong>Row 13, Column A</strong>: Green LED Cathode (-) → Connect to power rail (-)</li>
+</ol>
+<h4>Step 5: Red LED - Temperature Sensor (Rows 16-18)</h4>
+<p><strong>IMPORTANT:</strong> LED anode and cathode must be in <strong>separate rows</strong> to avoid short circuit.</p>
+<ol>
+<li><strong>Row 16</strong>: Place 220Ω resistor:</li>
+<li><strong>Column A</strong>: One end → Connect to <strong>Physical Pin 16 (GPIO 23)</strong></li>
+<li>
+<p><strong>Column B</strong>: Other end (resistor output)</p>
+</li>
+<li>
+<p><strong>Row 17, Column A</strong>: Red LED Anode (+) (near DS18B20 temperature sensor) → Jumper wire to Row 16-B</p>
+</li>
+<li><strong>Row 18, Column A</strong>: Red LED Cathode (-) → Connect to power rail (-)</li>
+</ol>
+<h4>Step 6: Blue LED - Button (Rows 21-23)</h4>
+<p><strong>IMPORTANT:</strong> LED anode and cathode must be in <strong>separate rows</strong> to avoid short circuit.</p>
+<ol>
+<li><strong>Row 21</strong>: Place 220Ω resistor:</li>
+<li><strong>Column A</strong>: One end → Connect to <strong>Physical Pin 18 (GPIO 24)</strong></li>
+<li>
+<p><strong>Column B</strong>: Other end (resistor output)</p>
+</li>
+<li>
+<p><strong>Row 22, Column A</strong>: Blue LED Anode (+) (near button) → Jumper wire to Row 21-B</p>
+</li>
+<li><strong>Row 23, Column A</strong>: Blue LED Cathode (-) → Connect to power rail (-)</li>
+</ol>
+<h4>Step 7: Push Button (Row 26)</h4>
+<ol>
+<li><strong>Row 26</strong>: Place push button:</li>
+<li><strong>Column A-B</strong>: Button Terminal 1 (same row, connected internally)</li>
+<li><strong>Column D-E</strong>: Button Terminal 2 (same row, connected internally)</li>
+<li>Connect <strong>Column A</strong> to <strong>Physical Pin 13 (GPIO 27)</strong></li>
+<li>Connect <strong>Column E</strong> to power rail (-)</li>
+<li><strong>Note:</strong> Internal pull-up is enabled in code, so button pulls GPIO LOW when pressed</li>
+</ol>
+<h4>Step 8: Buzzer (Rows 31-32)</h4>
+<p><strong>IMPORTANT:</strong> Buzzer positive and negative must be in <strong>separate rows</strong> to avoid short circuit.</p>
+<ol>
+<li><strong>Row 31, Column A</strong>: Buzzer Positive (+) terminal → Connect to <strong>Physical Pin 11 (GPIO 17)</strong></li>
+<li><strong>Optional</strong>: Add 220Ω resistor in series if needed</li>
+<li><strong>Row 32, Column A</strong>: Buzzer Negative (-) terminal → Connect to power rail (-)</li>
+</ol>
+<p><strong>Wiring Tips:</strong>
+- Use jumper wires to connect components on the same row
+- All GND connections go to power rail (-)
+- Keep components organized by rows for easier troubleshooting
+- Leave space between component groups for clarity</p>
+<h3>Breadboard Layout Diagram</h3>
+<p><strong>Note:</strong> This system is designed for a standard breadboard with <strong>64 rows and 5 columns (A-E)</strong>. The detailed row-by-row placement guide is provided below.</p>
+<p><strong>Standard Breadboard Structure:</strong>
+- <strong>Power Rails</strong>: Left and right sides (Red = +, Blue/Black = -)
+- <strong>Main Area</strong>: Rows 1-64, Columns A-E (left side) and A-E (right side)
+- <strong>Center Gap</strong>: Separates left and right sections (for DIP ICs)</p>
+<p><strong>Recommended Component Placement by Row:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Row Range</th>
+<th>Component</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Power Rails</strong></td>
+<td>Left/Right sides</td>
+<td>Red (+) and Black (-) rails</td>
+</tr>
+<tr>
+<td><strong>Row 1</strong></td>
+<td>DS18B20 VDD</td>
+<td>A: VDD (Red) to Power Rail +</td>
+</tr>
+<tr>
+<td><strong>Row 2</strong></td>
+<td>DS18B20 GND</td>
+<td>A: GND (Black) to Power Rail -</td>
+</tr>
+<tr>
+<td><strong>Row 3</strong></td>
+<td>DS18B20 DATA</td>
+<td>A: DATA (Yellow) to Pin 7</td>
+</tr>
+<tr>
+<td><strong>Row 4</strong></td>
+<td>4.7kΩ Resistor</td>
+<td>Pull-up for DS18B20 DATA</td>
+</tr>
+<tr>
+<td><strong>Row 6</strong></td>
+<td>MAX30102 VIN</td>
+<td>A: VIN to Pin 1/2</td>
+</tr>
+<tr>
+<td><strong>Row 7</strong></td>
+<td>MAX30102 GND</td>
+<td>A: GND to Power Rail -</td>
+</tr>
+<tr>
+<td><strong>Row 8</strong></td>
+<td>MAX30102 SDA</td>
+<td>A: SDA to Pin 3</td>
+</tr>
+<tr>
+<td><strong>Row 9</strong></td>
+<td>MAX30102 SCL</td>
+<td>A: SCL to Pin 5</td>
+</tr>
+<tr>
+<td><strong>Row 11</strong></td>
+<td>220Ω Resistor</td>
+<td>For Green LED</td>
+</tr>
+<tr>
+<td><strong>Row 12</strong></td>
+<td>Green LED Anode</td>
+<td>Heart sensor (near MAX30102)</td>
+</tr>
+<tr>
+<td><strong>Row 13</strong></td>
+<td>Green LED Cathode</td>
+<td>To Power Rail -</td>
+</tr>
+<tr>
+<td><strong>Row 16</strong></td>
+<td>220Ω Resistor</td>
+<td>For Red LED</td>
+</tr>
+<tr>
+<td><strong>Row 17</strong></td>
+<td>Red LED Anode</td>
+<td>Temperature sensor (near DS18B20)</td>
+</tr>
+<tr>
+<td><strong>Row 18</strong></td>
+<td>Red LED Cathode</td>
+<td>To Power Rail -</td>
+</tr>
+<tr>
+<td><strong>Row 21</strong></td>
+<td>220Ω Resistor</td>
+<td>For Blue LED</td>
+</tr>
+<tr>
+<td><strong>Row 22</strong></td>
+<td>Blue LED Anode</td>
+<td>Button indicator (near button)</td>
+</tr>
+<tr>
+<td><strong>Row 23</strong></td>
+<td>Blue LED Cathode</td>
+<td>To Power Rail -</td>
+</tr>
+<tr>
+<td><strong>Row 26</strong></td>
+<td>Push Button</td>
+<td>Medication confirmation</td>
+</tr>
+<tr>
+<td><strong>Row 31</strong></td>
+<td>Buzzer Positive</td>
+<td>To Pin 11</td>
+</tr>
+<tr>
+<td><strong>Row 32</strong></td>
+<td>Buzzer Negative</td>
+<td>To Power Rail -</td>
+</tr>
+<tr>
+<td><strong>Row 36-64</strong></td>
+<td>Available</td>
+<td>For future expansion</td>
+</tr>
+</tbody>
+</table>
+<p><strong>For complete detailed wiring instructions with exact row and column positions, see <code>WIRING_GUIDE.md</code> or <code>BREADBOARD_LAYOUT_DETAILED.md</code></strong></p>
+<div class="codehilite"><pre><span></span><code>                    Raspberry Pi 3
+    ┌─────────────────────────────────────────┐
+    │  [1] 3.3V  [2] 5V   [3] SDA  [4] 5V   │
+    │  [5] SCL   [6] GND  [7] GPIO4 [8]     │
+    │  [9] GND   [10]     [11] GPIO17 [12]  │
+    │  [13] GPIO27 [14] GND [15] GPIO22 [16]│
+    │  [17] GPIO23 [18] GPIO24 [19] [20] GND│
+    └─────────────────────────────────────────┘
+                    │
+                    │ Jumper Wires
+                    ▼
+    ┌─────────────────────────────────────────┐
+    │         BREADBOARD (64 Rows, A-E)        │
+    │                                         │
+    │  Power Rail + ← Pin 2 (5V)             │
+    │  Power Rail - ← Pin 6 (GND)            │
+    │                                         │
+    │  Row 1-2:   DS18B20 + 4.7kΩ            │
+    │  Row 6:     MAX30102                    │
+    │  Row 11-12: Green LED (Heart - near MAX30102) │
+    │  Row 16-17: Red LED (Temp - near DS18B20)     │
+    │  Row 21-22: Blue LED (Button - near button)   │
+    │  Row 26:    Push Button                 │
+    │  Row 31:    Buzzer                      │
+    │  Row 36-64: Available                   │
+    └─────────────────────────────────────────┘
+</code></pre></div>
+
+<h3>Safety Checklist</h3>
+<ul>
+<li>[ ] Double-check all connections before powering on</li>
+<li>[ ] Verify resistor values (220Ω for LEDs, 4.7kΩ for DS18B20)</li>
+<li>[ ] Ensure all GND connections are connected to common ground</li>
+<li>[ ] Check sensor voltage requirements (3.3V vs 5V)</li>
+<li>[ ] Test each component individually before full system test</li>
+<li>[ ] Verify LED polarity (anode/cathode)</li>
+<li>[ ] Ensure button connects GPIO to GND (not VCC)</li>
+</ul>
+<hr />
+<h2>Software Installation</h2>
+<h3>Prerequisites</h3>
+<ul>
+<li>Raspberry Pi 3 with Raspberry Pi OS installed</li>
+<li>Internet connection for package installation</li>
+<li>Python 3.x (usually pre-installed)</li>
+</ul>
+<h3>Step 1: Enable Required Interfaces</h3>
+<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>raspi-config
+</code></pre></div>
+
+<p>Navigate to:
+- <strong>Interface Options</strong> → <strong>I2C</strong> → Enable
+- <strong>Interface Options</strong> → <strong>1-Wire</strong> → Enable</p>
+<p>Reboot if prompted:</p>
+<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>reboot
+</code></pre></div>
+
+<h3>Step 2: Verify Interfaces</h3>
+<p><strong>Check I2C (for MAX30102):</strong></p>
+<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>i2cdetect<span class="w"> </span>-y<span class="w"> </span><span class="m">1</span>
+</code></pre></div>
+
+<p>Should show device addresses (typically 0x57 for MAX30102).</p>
+<p><strong>Check 1-Wire (for DS18B20):</strong></p>
+<div class="codehilite"><pre><span></span><code>ls<span class="w"> </span>/sys/bus/w1/devices/
+</code></pre></div>
+
+<p>Should show device directories (e.g., <code>28-xxxxx</code>).</p>
+<h3>Step 3: Install Python Dependencies</h3>
+<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>python3-pip<span class="w"> </span>python3-dev<span class="w"> </span>python3-smbus
+
+pip3<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</code></pre></div>
+
+<h3>Step 4: Install System Files</h3>
+<p>Copy <code>medhealth_system.py</code> to your Raspberry Pi:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># On Raspberry Pi</span>
+nano<span class="w"> </span>medhealth_system.py
+<span class="c1"># Paste code and save</span>
+</code></pre></div>
+
+<p>Make executable:</p>
+<div class="codehilite"><pre><span></span><code>chmod<span class="w"> </span>+x<span class="w"> </span>medhealth_system.py
+</code></pre></div>
+
+<h3>Step 5: Run the System</h3>
+<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>python3<span class="w"> </span>medhealth_system.py
+</code></pre></div>
+
+<p><strong>Note:</strong> <code>sudo</code> is required for GPIO access.</p>
+<hr />
+<h2>System Workflow</h2>
+<h3>Main Menu</h3>
+<div class="codehilite"><pre><span></span><code>💊<span class="w"> </span><span class="nv">MEDHEALTH</span><span class="w"> </span><span class="nv">SYSTEM</span>
+═══════════════════════════════════════════════════════════
+<span class="mi">1</span>.<span class="w"> </span>➕<span class="w"> </span><span class="nv">Add</span><span class="w"> </span><span class="nv">Medication</span>
+<span class="mi">2</span>.<span class="w"> </span>📋<span class="w"> </span><span class="nv">View</span><span class="w"> </span><span class="nv">Medications</span>
+<span class="mi">3</span>.<span class="w"> </span>🗑️<span class="w"> </span><span class="nv">Delete</span><span class="w"> </span><span class="nv">Medication</span>
+<span class="mi">4</span>.<span class="w"> </span>📊<span class="w"> </span><span class="nv">Measure</span><span class="w"> </span><span class="nv">Vitals</span><span class="w"> </span><span class="ss">(</span><span class="nv">Manual</span><span class="ss">)</span>
+<span class="mi">5</span>.<span class="w"> </span>📈<span class="w"> </span><span class="nv">View</span><span class="w"> </span><span class="nv">Medication</span><span class="w"> </span><span class="nv">History</span>
+<span class="mi">6</span>.<span class="w"> </span>🧪<span class="w"> </span><span class="nv">Test</span><span class="w"> </span><span class="nv">Alarm</span>
+<span class="mi">7</span>.<span class="w"> </span>🚀<span class="w"> </span><span class="nv">Start</span><span class="w"> </span><span class="nv">Monitoring</span>
+<span class="mi">8</span>.<span class="w"> </span>🚪<span class="w"> </span><span class="k">Exit</span>
+═══════════════════════════════════════════════════════════
+</code></pre></div>
+
+<h3>Option 1: Add Medication</h3>
+<ol>
+<li>Select option 1</li>
+<li>Enter medication name (e.g., "Aspirin")</li>
+<li>Enter schedule time in HH:MM format (e.g., "08:00")</li>
+<li>Medication added to database</li>
+</ol>
+<h3>Option 2: View Medications</h3>
+<p>Displays all active medications with:
+- Medication ID
+- Medication name
+- Scheduled time
+- Current status (✓ Taken / ✗ Missed / ⏰ Pending / ⏳ Upcoming)
+- Date and current time header
+- Total count of active medications</p>
+<p><strong>Note:</strong> Press Enter to continue after viewing.</p>
+<h3>Option 3: Delete Medication</h3>
+<ol>
+<li>View medications first (option 2)</li>
+<li>Select option 3</li>
+<li>Enter medication ID to delete</li>
+<li>Medication marked as inactive</li>
+</ol>
+<h3>Option 4: Measure Vitals (Manual)</h3>
+<ul>
+<li>Measures temperature instantly</li>
+<li>Measures heart rate (waits up to 10 seconds)</li>
+<li>Displays results on screen</li>
+<li><strong>Not saved to database</strong> (for checking only)</li>
+</ul>
+<h3>Option 5: View Medication History</h3>
+<p>Shows last 20 medication logs with:
+- Medication name and status (✓ TAKEN / ✗ MISSED)
+- Scheduled vs actual time
+- Temperature and heart rate (if measured)
+- Full timestamp (date and time)
+- Statistics summary:
+  - Total entries
+  - Taken vs Missed count
+  - Entries with vital signs</p>
+<p><strong>Display Format:</strong>
+- Professional table layout
+- Clear status indicators
+- Formatted date/time display
+- Statistics at the bottom</p>
+<p><strong>Note:</strong> Press Enter to continue after viewing.</p>
+<p>Example log entry:</p>
+<div class="codehilite"><pre><span></span><code>Aspirin              08:00        08:15:32     ✓ TAKEN    T:36.7°C HR:72bpm   2024-01-15 08:15:32
+</code></pre></div>
+
+<h3>Option 6: Test Menu</h3>
+<p><strong>Submenu Options:</strong>
+1. <strong>Test Alarm</strong> - Test all LEDs and buzzer
+   - All LEDs blink for 3 seconds
+   - Buzzer sounds for 3 seconds
+   - Useful for verifying hardware connections</p>
+<ol>
+<li><strong>Test Button</strong> - Real-time button testing ⭐ NEW</li>
+<li>Press button → Blue LED turns ON + Buzzer sounds</li>
+<li>Release button → Blue LED turns OFF + Buzzer stops</li>
+<li>Shows press/release counters</li>
+<li>Tests button connection on startup</li>
+<li>
+<p>Press Ctrl+C to exit</p>
+</li>
+<li>
+<p><strong>Back to Main Menu</strong></p>
+</li>
+</ol>
+<h3>Option 7: Start Monitoring (Health Monitoring Only)</h3>
+<p><strong>IMPORTANT:</strong> Medication alarms work independently and automatically. This option only starts health monitoring.</p>
+<p><strong>Background Processes:</strong>
+- <strong>Health monitoring</strong>: Checks temperature and heart rate every 10 seconds
+- <strong>Dashboard updates</strong>: Every 30 seconds
+- <strong>Medication alarms</strong>: Continue running independently (not affected by this option)</p>
+<p><strong>Note:</strong> Medication alarms run automatically in the background. You don't need to start monitoring for alarms to work.</p>
+<p><strong>Medication Alarm Flow (Automatic):</strong>
+1. <strong>Alarm Detection:</strong>
+   - System checks every 5 seconds (improved accuracy)
+   - Triggers if within 30 seconds of scheduled time (before or after)
+   - Works automatically when system starts</p>
+<ol>
+<li>When scheduled time arrives:</li>
+<li>Blue LED near button blinks</li>
+<li>Buzzer sounds with PWM tone (clear, audible beeping pattern)</li>
+<li>System waits up to 60 seconds</li>
+<li>
+<p>Console displays medication reminder banner</p>
+</li>
+<li>
+<p>User presses button to confirm:</p>
+</li>
+<li>Alarm stops immediately</li>
+<li><strong>Blue LED turns ON + Continuous beep for 2 seconds</strong> (indicates medicine taken)</li>
+<li>Clear confirmation message displayed</li>
+<li>
+<p>System asks: "Measure vitals now?"</p>
+</li>
+<li>
+<p>If button pressed within 5 seconds (for vitals):</p>
+</li>
+<li>Measures temperature and heart rate</li>
+<li>Saves medication log with vital signs</li>
+<li>
+<p>Example log:
+     ```
+     ✓ MEDICATION LOGGED
+     Medication: Aspirin
+     Scheduled: 08:00 | Actual: 08:15:32
+     Status: TAKEN</p>
+<p>📊 Vital Signs:
+    • Temperature: 36.7°C
+    • Heart Rate: 72 bpm
+ ```</p>
+</li>
+<li>
+<p>If no button press (5 seconds - skip vitals):</p>
+</li>
+<li>Saves medication log without vital signs</li>
+<li>Status: "taken"</li>
+<li>
+<p>Alarm monitoring continues automatically</p>
+</li>
+<li>
+<p>If no button press (60 seconds - missed):</p>
+</li>
+<li>Medication marked as "missed"</li>
+<li>Logged without vital signs</li>
+<li>Alarm monitoring continues automatically</li>
+</ol>
+<p><strong>Health Monitoring (Only when Option 7 is active):</strong>
+- Checks temperature and heart rate every 10 seconds
+- <strong>Temperature abnormal</strong> (&lt; 18°C or &gt; 30°C):
+  - Red LED (near temp sensor) blinks
+  - Buzzer sounds for 5 seconds
+  - Console alert: <code>⚠️ ALERT: Abnormal Temperature: XX.X°C</code></p>
+<ul>
+<li><strong>Heart rate abnormal</strong> (&lt; 60 bpm or &gt; 120 bpm):</li>
+<li>Green LED (near heart sensor) blinks</li>
+<li>Buzzer sounds for 5 seconds</li>
+<li>
+<p>Console alert: <code>⚠️ ALERT: Abnormal Heart Rate: XX bpm</code></p>
+</li>
+<li>
+<p><strong>Normal readings</strong>:</p>
+</li>
+<li>
+<p>Console display: <code>📊 Vitals: Temp=XX.X°C, HR=XX bpm</code></p>
+</li>
+<li>
+<p><strong>Dashboard Updates:</strong></p>
+</li>
+<li>Shows active medications and their status</li>
+<li>Displays upcoming medications with countdown</li>
+<li>Updates every 30 seconds</li>
+</ul>
+<p><strong>Stop Monitoring:</strong>
+- Press <code>Ctrl+C</code> to stop health monitoring
+- Medication alarms continue running independently
+- Or select option 8 (Exit) to stop everything</p>
+<h3>Option 8: Exit</h3>
+<ul>
+<li>Stops all monitoring (health monitoring + alarm monitoring)</li>
+<li>Turns off all LEDs and buzzer</li>
+<li>Closes database connections</li>
+<li>Cleans up GPIO</li>
+<li>Exits gracefully</li>
+</ul>
+<hr />
+<h2>System Architecture</h2>
+<h3>Independent Alarm System ⭐ NEW</h3>
+<p>The medication alarm system runs <strong>automatically</strong> when the program starts:
+- <strong>No user action required</strong> - Alarms work immediately
+- <strong>Background thread</strong> - Runs independently of menu options
+- <strong>High accuracy</strong> - Checks every 5 seconds with 30-second time window
+- <strong>Always active</strong> - Works even when "Start Monitoring" is not active</p>
+<h3>Health Monitoring System</h3>
+<p>The health monitoring system is <strong>optional</strong> and only active when Option 7 is selected:
+- <strong>Separate from alarms</strong> - Does not affect medication alarms
+- <strong>Vitals only</strong> - Monitors temperature and heart rate
+- <strong>Dashboard display</strong> - Shows medication schedule and countdown
+- <strong>Can be stopped</strong> - Press Ctrl+C to stop (alarms continue)</p>
+<hr />
+<h2>Technical Specifications</h2>
+<h3>Sensor Specifications</h3>
+<p><strong>DS18B20 Temperature Sensor</strong>
+- <strong>Measurement Range</strong>: -55°C to +125°C
+- <strong>Accuracy</strong>: ±0.5°C (in range 10°C to 85°C)
+- <strong>Resolution</strong>: 9 to 12 bits (programmable)
+- <strong>Interface</strong>: 1-Wire (single data line)
+- <strong>Power</strong>: 3.0V to 5.5V
+- <strong>Current</strong>: &lt; 1.5mA active, &lt; 750µA idle</p>
+<p><strong>MAX30102 Heart Rate Sensor</strong>
+- <strong>Measurement</strong>: Heart rate (BPM), SpO2
+- <strong>Heart Rate Range</strong>: 50-150 bpm (typical)
+- <strong>Interface</strong>: I2C (SDA, SCL)
+- <strong>Power</strong>: 3.3V or 5V (module dependent)
+- <strong>Sampling Rate</strong>: Programmable (typically 50-3200 Hz)</p>
+<h3>Threshold Values</h3>
+<ul>
+<li><strong>Temperature Normal Range</strong>: 18°C to 30°C</li>
+<li><strong>Heart Rate Normal Range</strong>: 60 bpm to 120 bpm</li>
+</ul>
+<p><strong>Note:</strong> These thresholds are for demonstration. Real medical thresholds may differ.</p>
+<h3>Database Schema</h3>
+<p><strong>Table: medications</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">medications</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTOINCREMENT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">schedule_time</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">active</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="n">created_at</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">CURRENT_TIMESTAMP</span>
+<span class="p">);</span>
+</code></pre></div>
+
+<p><strong>Table: medication_logs</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">medication_logs</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTOINCREMENT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">medication_id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="p">,</span>
+<span class="w">    </span><span class="n">medication_name</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">scheduled_time</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">actual_time</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">status</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">temperature</span><span class="w"> </span><span class="nb">REAL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">heart_rate</span><span class="w"> </span><span class="nb">INTEGER</span><span class="p">,</span>
+<span class="w">    </span><span class="n">created_at</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span>
+<span class="w">    </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">medication_id</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">medications</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div>
+
+<p><strong>Table: vitals_logs</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">vitals_logs</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTOINCREMENT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">temperature</span><span class="w"> </span><span class="nb">REAL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">heart_rate</span><span class="w"> </span><span class="nb">INTEGER</span><span class="p">,</span>
+<span class="w">    </span><span class="n">status</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">created_at</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">CURRENT_TIMESTAMP</span>
+<span class="p">);</span>
+</code></pre></div>
+
+<h3>GPIO Pin Configuration</h3>
+<ul>
+<li><strong>Mode</strong>: BOARD (Physical pin numbering)</li>
+<li><strong>Pull-up</strong>: Enabled on button pin (GPIO 27)</li>
+<li><strong>PWM</strong>: Not used (digital I/O only)</li>
+</ul>
+<hr />
+<h2>Safety &amp; Medical Disclaimer</h2>
+<h3>⚠️ IMPORTANT DISCLAIMER</h3>
+<p><strong>This system is designed for EDUCATIONAL and PERSONAL HEALTH AWARENESS purposes ONLY.</strong></p>
+<ul>
+<li><strong>NOT a medical device</strong>: This system does NOT provide medical diagnosis or treatment</li>
+<li><strong>NOT FDA approved</strong>: Not intended for clinical use</li>
+<li><strong>For educational purposes</strong>: Demonstrates Health Informatics concepts</li>
+<li><strong>Consult healthcare professionals</strong>: Always seek medical advice from qualified professionals</li>
+<li><strong>No liability</strong>: Use at your own risk</li>
+</ul>
+<h3>Intended Use</h3>
+<ul>
+<li>Personal health awareness and monitoring</li>
+<li>Educational demonstration of Health Informatics systems</li>
+<li>Medication adherence tracking (non-medical)</li>
+<li>Basic vital signs observation</li>
+</ul>
+<h3>Limitations</h3>
+<ul>
+<li>Sensor accuracy may vary</li>
+<li>Not calibrated for medical use</li>
+<li>Thresholds are for demonstration only</li>
+<li>No medical interpretation provided</li>
+<li>No emergency response capabilities</li>
+</ul>
+<hr />
+<h2>Troubleshooting</h2>
+<h3>Sensors Not Detected</h3>
+<p><strong>DS18B20 (Temperature):</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Check 1-Wire interface</span>
+ls<span class="w"> </span>/sys/bus/w1/devices/
+
+<span class="c1"># If empty, enable 1-Wire:</span>
+sudo<span class="w"> </span>raspi-config
+<span class="c1"># Interface Options → 1-Wire → Enable</span>
+
+<span class="c1"># Check wiring (Physical Pin 7)</span>
+</code></pre></div>
+
+<p><strong>MAX30102 (Heart Rate):</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Check I2C interface</span>
+sudo<span class="w"> </span>i2cdetect<span class="w"> </span>-y<span class="w"> </span><span class="m">1</span>
+
+<span class="c1"># Should show device address (typically 0x57)</span>
+<span class="c1"># If empty, enable I2C:</span>
+sudo<span class="w"> </span>raspi-config
+<span class="c1"># Interface Options → I2C → Enable</span>
+
+<span class="c1"># Check wiring (Physical Pins 3 and 5)</span>
+</code></pre></div>
+
+<h3>LEDs Not Working</h3>
+<ul>
+<li><strong>Check polarity</strong>: LED anode (+) must connect to GPIO pin</li>
+<li><strong>Verify resistor</strong>: 220Ω resistor in series</li>
+<li><strong>Test with multimeter</strong>: Check voltage at LED anode</li>
+<li><strong>Check GPIO pin</strong>: Verify correct physical pin number</li>
+</ul>
+<h3>Buzzer Not Working</h3>
+<ul>
+<li><strong>Check buzzer type</strong>: Active buzzer (not passive)</li>
+<li><strong>Verify voltage</strong>: 5V active buzzer recommended</li>
+<li><strong>Check connections</strong>: Positive to Pin 11, Negative to GND</li>
+<li><strong>Test directly</strong>: Connect to 5V to verify buzzer works</li>
+</ul>
+<h3>Button Not Responding</h3>
+<ul>
+<li><strong>Check pull-up</strong>: Code uses internal pull-up (GPIO.PUD_UP)</li>
+<li><strong>Verify connection</strong>: Button connects GPIO to GND when pressed</li>
+<li><strong>Test continuity</strong>: Use multimeter to check button</li>
+<li><strong>Debounce</strong>: Code includes 0.1s debounce delay</li>
+</ul>
+<h3>System Crashes or Freezes</h3>
+<ul>
+<li><strong>Check power supply</strong>: Ensure adequate 5V/2A power supply</li>
+<li><strong>Check connections</strong>: Loose wires can cause issues</li>
+<li><strong>Review logs</strong>: Check for error messages</li>
+<li><strong>Restart system</strong>: <code>sudo reboot</code></li>
+</ul>
+<h3>View Medications/History Not Showing</h3>
+<ul>
+<li><strong>Check database</strong>: Verify <code>medhealth.db</code> file exists in the same directory</li>
+<li><strong>Check permissions</strong>: Ensure write/read permissions for the database file</li>
+<li><strong>Press Enter</strong>: Functions now pause and wait for Enter key - make sure to press Enter after viewing</li>
+<li><strong>Check console</strong>: Output should be visible in terminal window</li>
+<li><strong>Error messages</strong>: Any errors will be displayed with details - check for error messages</li>
+<li><strong>Empty database</strong>: If no medications exist, appropriate message will be shown</li>
+</ul>
+<h3>Medication Alarm Not Playing</h3>
+<ul>
+<li><strong>Alarms run automatically</strong> - No need to start monitoring (Option 7) for alarms to work</li>
+<li><strong>Check time format</strong>: Verify medication schedule time matches current time (HH:MM format, e.g., 08:00)</li>
+<li><strong>Time window</strong>: Alarms trigger within 30 seconds of scheduled time (before or after)</li>
+<li><strong>Check GPIO</strong>: Verify buzzer and LED connections (Physical Pin 11 for buzzer, Pin 18 for Blue LED)</li>
+<li><strong>Test alarm</strong>: Use Option 6 → Option 1 (Test Alarm) to verify hardware is working</li>
+<li><strong>Test button</strong>: Use Option 6 → Option 2 (Test Button) to verify button works</li>
+<li><strong>Check button</strong>: Verify button is connected correctly (Physical Pin 13)</li>
+<li><strong>System startup</strong>: Alarms start automatically when program runs (check initialization messages)</li>
+</ul>
+<h3>Database Errors</h3>
+<ul>
+<li><strong>Check permissions</strong>: Ensure write permissions in directory</li>
+<li><strong>Check disk space</strong>: <code>df -h</code></li>
+<li><strong>Verify file</strong>: Check if <code>medhealth.db</code> exists</li>
+<li><strong>Recreate database</strong>: Delete <code>medhealth.db</code> and restart</li>
+</ul>
+<h3>Import Errors</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Reinstall dependencies</span>
+pip3<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+
+<span class="c1"># For RPi.GPIO:</span>
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>python3-rpi.gpio
+
+<span class="c1"># For sensor libraries:</span>
+pip3<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>adafruit-circuitpython-max30102
+pip3<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>w1thermsensor
+</code></pre></div>
+
+<hr />
+<h2>System Confirmation Checklist</h2>
+<h3>✅ Heart Rate Measurement</h3>
+<ul>
+<li>[ ] System measures heart rate in <strong>BPM</strong> (beats per minute)</li>
+<li>[ ] MAX30102 sensor connected and detected</li>
+<li>[ ] Heart rate displayed in console and logs</li>
+</ul>
+<h3>✅ Temperature Sensor</h3>
+<ul>
+<li>[ ] DS18B20 temperature sensor connected</li>
+<li>[ ] Temperature measured in <strong>°C</strong> (Celsius)</li>
+<li>[ ] Temperature displayed in console and logs</li>
+</ul>
+<h3>✅ Buzzer Functionality</h3>
+<ul>
+<li>[ ] One buzzer handles all alerts:</li>
+<li>[ ] Medication reminders</li>
+<li>[ ] Temperature abnormalities</li>
+<li>[ ] Heart rate abnormalities</li>
+<li>[ ] Buzzer sounds correctly for each alert type</li>
+</ul>
+<h3>✅ LED Indicators</h3>
+<ul>
+<li>[ ] <strong>Green LED</strong> near heart sensor blinks when HR abnormal</li>
+<li>[ ] <strong>Red LED</strong> near temp sensor blinks when temp abnormal</li>
+<li>[ ] <strong>Blue LED</strong> near button:</li>
+<li>[ ] Blinks during medication alarm (with buzzer)</li>
+<li>[ ] Turns ON for 2 seconds with continuous beep when medication taken (confirmation)</li>
+</ul>
+<h3>✅ Button Functionality</h3>
+<ul>
+<li>[ ] Button turns off medication alarm</li>
+<li>[ ] Button confirms medication intake</li>
+<li>[ ] Button triggers 2-second continuous beep + Blue LED ON (confirmation indicator)</li>
+</ul>
+<h3>✅ Workflow Implementation</h3>
+<ul>
+<li>[ ] Main menu with 8 options works correctly</li>
+<li>[ ] Medication alarm flow implemented as specified</li>
+<li>[ ] Manual vitals measurement works</li>
+<li>[ ] Continuous monitoring works</li>
+<li>[ ] History viewing works</li>
+</ul>
+<hr />
+<h2>Conclusion</h2>
+<p>This Smart Medication Adherence and Health Monitoring System provides a complete solution for:</p>
+<ol>
+<li><strong>Medication tracking</strong> with smart alarms</li>
+<li><strong>Vital signs monitoring</strong> (temperature and heart rate in BPM)</li>
+<li><strong>Health alerts</strong> with visual and audio indicators</li>
+<li><strong>Data logging</strong> for personal health awareness</li>
+</ol>
+<p>The system is designed as an educational Health Informatics tool, demonstrating how digital systems can support patient adherence and health awareness in a low-cost, practical manner.</p>
+<hr />
+<p><strong>Document Version:</strong> 3.0<br />
+<strong>Last Updated:</strong> January 2024<br />
+<strong>Project:</strong> Media Management - TH Deggendorf</p>
+<p><strong>Recent Updates (v3.0):</strong>
+- ✅ <strong>Independent Alarm System</strong> - Alarms work automatically, no need to start monitoring
+- ✅ <strong>Improved Alarm Detection</strong> - 5-second checks with 30-second time window for accuracy
+- ✅ <strong>PWM Buzzer Support</strong> - Clear, audible tones with PWM (2000 Hz)
+- ✅ <strong>Enhanced Button Detection</strong> - Better debouncing and real-time response
+- ✅ <strong>Button Test Function</strong> - New test menu with button testing (Option 6 → Option 2)
+- ✅ <strong>Separated Monitoring</strong> - Start Monitoring (Option 7) only does health monitoring
+- ✅ <strong>Better Alarm Timing</strong> - Catches alarms even if check happens slightly before/after scheduled time
+- ✅ <strong>System Architecture</strong> - Alarms run in background thread, always active
+- ✅ All previous fixes from v2.2 (wiring, bug fixes, error handling)</p>
+<hr />
+<h2>Quick Reference Card</h2>
+<h3>Pin Connections (Physical Pins)</h3>
+<ul>
+<li><strong>DS18B20 DATA</strong>: Pin 7</li>
+<li><strong>MAX30102 SDA</strong>: Pin 3</li>
+<li><strong>MAX30102 SCL</strong>: Pin 5</li>
+<li><strong>Buzzer</strong>: Pin 11</li>
+<li><strong>Button</strong>: Pin 13</li>
+<li><strong>LED Heart</strong>: Pin 15</li>
+<li><strong>LED Temp</strong>: Pin 16</li>
+<li><strong>LED Button</strong>: Pin 18</li>
+<li><strong>5V</strong>: Pin 2</li>
+<li><strong>GND</strong>: Pin 6</li>
+</ul>
+<h3>Key Commands</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Enable interfaces</span>
+sudo<span class="w"> </span>raspi-config
+
+<span class="c1"># Check I2C</span>
+sudo<span class="w"> </span>i2cdetect<span class="w"> </span>-y<span class="w"> </span><span class="m">1</span>
+
+<span class="c1"># Check 1-Wire</span>
+ls<span class="w"> </span>/sys/bus/w1/devices/
+
+<span class="c1"># Run system</span>
+sudo<span class="w"> </span>python3<span class="w"> </span>medhealth_system.py
+</code></pre></div>
+
+<h3>Normal Ranges</h3>
+<ul>
+<li><strong>Temperature</strong>: 18°C - 30°C</li>
+<li><strong>Heart Rate</strong>: 60 - 120 bpm</li>
+</ul>
+<hr />
+<p><strong>End of Documentation</strong></p>
+        
+        <div style="margin-top: 50px; padding-top: 20px; border-top: 2px solid #ecf0f1; text-align: center; color: #7f8c8d; font-size: 12px;">
+            <p>Smart Medication Adherence and Health Monitoring System - Complete Documentation</p>
+            <p>Version 1.0 | TH Deggendorf - Health Informatics</p>
+        </div>
+    </body>
+    </html>
+    

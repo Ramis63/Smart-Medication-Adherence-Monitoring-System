@@ -15,63 +15,53 @@ jobs:
       RUST_BACKTRACE: "1"
       API_KEY: "dev-key-12345"
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Install system dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y sqlite3 libsqlite3-dev
 
-      - name: Install Rust
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          override: true
+      - name: Set up Rust
+        uses: dtolnay/rust-toolchain@stable
 
-      - name: Cache cargo dependencies
-        uses: actions/cache@v3
+      - name: Cache cargo
+        uses: actions/cache@v4
         with:
           path: |
-            ~/.cargo/bin/
-            ~/.cargo/registry/index/
-            ~/.cargo/registry/cache/
-            ~/.cargo/git/db/
-            backend/target/
-          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+            ~/.cargo/registry
+            ~/.cargo/git
+            backend/target
+          key: ${{ runner.os }}-cargo-${{ hashFiles('backend/Cargo.lock') }}
 
       - name: Build
-        working-directory: ./backend
+        working-directory: backend
         run: cargo build --verbose
 
       - name: Prepare DB file
-        working-directory: ./backend
+        working-directory: backend
         run: |
           touch medhealth.db
 
       - name: Run tests
-        working-directory: ./backend
-<<<<<<< HEAD
-        run: cargo test --verbose -- --test-threads=1
-=======
+        working-directory: backend
         run: cargo test --verbose -- --test-threads=1 --nocapture
->>>>>>> 47ba4a6 (Fix CI tests (deps + backtrace))
 
       - name: Check formatting
-        working-directory: ./backend
+        working-directory: backend
         run: cargo fmt -- --check || true
 
   lint:
     name: Lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - name: Install Rust
-        uses: actions-rs/toolchain@v1
+      - name: Set up Rust (with clippy + rustfmt)
+        uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: stable
           components: rustfmt, clippy
 
       - name: Run clippy
-        working-directory: ./backend
+        working-directory: backend
         run: cargo clippy -- -D warnings || true

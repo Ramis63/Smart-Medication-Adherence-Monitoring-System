@@ -21,6 +21,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     container_name: medhealth-backend
+    env_file: .env
     ports:
       - "${BACKEND_PORT:-8080}:8080"
     environment:

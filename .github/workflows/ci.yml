@@ -10,7 +10,8 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
-    
+env:
+  DATABASE_URL: medhealth.db
     steps:
     - uses: actions/checkout@v3
     

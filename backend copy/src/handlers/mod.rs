@@ -6,7 +6,7 @@ use rusqlite::params;
 use log::error;
 
 mod retry;
-pub use retry::*;
+
 
 #[cfg(test)]
 mod tests;

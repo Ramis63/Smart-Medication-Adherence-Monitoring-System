@@ -1,0 +1,9 @@
+target/
+Cargo.lock
+.env
+*.db
+*.db-shm
+*.db-wal
+.git
+.gitignore
+

@@ -36,9 +36,14 @@ jobs:
         working-directory: ./backend
         run: cargo build --verbose
 
+      - name: Prepare DB file
+        working-directory: ./backend
+        run: |
+          touch medhealth.db
+
       - name: Run tests
         working-directory: ./backend
-        run: cargo test --verbose
+        run: cargo test --verbose -- --test-threads=1
 
       - name: Check formatting
         working-directory: ./backend

@@ -12,8 +12,15 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DATABASE_URL: medhealth.db
+      RUST_BACKTRACE: "1"
+      API_KEY: "dev-key-12345"
     steps:
       - uses: actions/checkout@v3
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y sqlite3 libsqlite3-dev
 
       - name: Install Rust
         uses: actions-rs/toolchain@v1
@@ -43,7 +50,11 @@ jobs:
 
       - name: Run tests
         working-directory: ./backend
+<<<<<<< HEAD
         run: cargo test --verbose -- --test-threads=1
+=======
+        run: cargo test --verbose -- --test-threads=1 --nocapture
+>>>>>>> 47ba4a6 (Fix CI tests (deps + backtrace))
 
       - name: Check formatting
         working-directory: ./backend

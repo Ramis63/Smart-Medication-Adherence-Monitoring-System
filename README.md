@@ -1,19 +1,119 @@
 # Smart Medication Adherence and Health Monitoring System
 
-A Raspberry Pi 3-based system designed to help users maintain regular medication intake while monitoring basic vital signs (body temperature and heart rate).
+A comprehensive health monitoring and medication adherence system available in two modes:
+- **Raspberry Pi Mode**: Local Python application with sensors and GPIO
+- **Web Platform Mode**: Docker-based web application with Rust backend, React frontend, and SQLite
+
+## Project Overview
+
+This system helps users maintain regular medication intake while monitoring vital signs. The repository contains both a Raspberry Pi implementation (local hardware-based) and a modern web platform (accessible via browser or GitHub Codespaces).
+
+### Two Operating Modes
+
+#### 1. Raspberry Pi Mode (Python + Hardware Sensors)
+- Local Python application running on Raspberry Pi 3
+- Direct hardware control via GPIO (temperature sensor, heart rate sensor, LED, buzzer, button)
+- SQLite database for local data storage
+- Standalone operation (no internet required)
+
+#### 2. Web Platform Mode (Rust Backend + React Frontend + Docker)
+- Scalable web application accessible from any device with a browser
+- Rust backend API with proper error handling and security
+- React frontend with responsive UI
+- Docker containerization for easy deployment
+- GitHub Codespaces support for instant cloud development
+- SQLite database (persistent volume in Docker)
+- REST API for integration with other systems
+- WebSocket support for real-time updates
+
+## Repository Structure
+
+```
+smart-medication-system/
+├── backend/                      # Rust backend API service
+│   ├── src/
+│   │   ├── main.rs              # Server entry point
+│   │   ├── handlers/            # API route handlers
+│   │   ├── models/              # Data models
+│   │   ├── middleware/          # Auth & request middleware
+│   │   ├── database/            # Database functions
+│   │   └── websocket/           # WebSocket handlers
+│   ├── Cargo.toml               # Rust dependencies
+│   └── Dockerfile               # Backend container image
+├── frontend/                     # React frontend application
+│   ├── index.html               # Main HTML file
+│   ├── css/style.css            # Styling
+│   ├── js/
+│   │   ├── app.js               # Main application logic
+│   │   ├── charts.js            # Data visualization
+│   │   ├── websocket.js         # WebSocket client
+│   │   └── sanitize.js          # Security utilities
+│   └── assets/                  # Static resources
+├── docker-compose.yml           # Container orchestration (database, backend, frontend)
+├── .devcontainer/
+│   └── devcontainer.json        # GitHub Codespaces configuration
+├── .github/workflows/
+│   └── ci.yml                   # GitHub Actions CI/CD pipeline
+├── scripts/
+│   └── init-db.sh               # Database initialization script
+├── medhealth_system.py          # Raspberry Pi main application
+├── add_sample_data.py           # Raspberry Pi data utility
+├── requirements.txt             # Python dependencies (for Raspberry Pi)
+├── .env.example                 # Environment variable template
+├── .gitignore                   # Git ignore rules
+├── README.md                    # This file
+├── QUICK_START.md               # Getting started guide
+├── CODESPACES_SETUP.md          # Codespaces instructions
+└── REQUIREMENTS_VERIFICATION.md # Compliance documentation
+```
 
 ## Features
 
 - 💊 **Medication Management**: Add, view, and delete medications with scheduled times
-- 🔔 **Smart Alarms**: Visual (LED) and audio (buzzer) reminders for medication times
-- 📊 **Vital Signs Monitoring**: Continuous monitoring of body temperature and heart rate
+- 🔔 **Smart Alarms**: Visual and audio reminders for medication times
+- 📊 **Vital Signs Monitoring**: Monitor body temperature and heart rate
 - ⚠️ **Health Alerts**: Automatic alerts when vital signs are abnormal
 - 📈 **Data Logging**: Complete history of medication intake and vital signs
-- 🎯 **User-Friendly Interface**: Clean menu system with emoji indicators
+- 🎯 **User-Friendly Interface**: Clean menu system (Raspberry Pi) or web UI (Web platform)
+- 🔐 **API Key Security**: Environment-based authentication (Web platform)
+- 🚀 **Cloud-Ready**: Docker + Codespaces support for instant deployment
 
-## System Components
+---
 
-### Hardware
+## Run (Web Mode)
+
+### Quick Start (Local Docker)
+
+```bash
+# 1. Copy environment template
+cp .env.example .env
+
+# 2. Start all services
+docker-compose up -d --build
+
+# 3. Access application
+# Frontend: http://localhost:3000
+# Backend API: http://localhost:8080/api/health
+```
+
+### Quick Start (GitHub Codespaces)
+
+```bash
+# 1. Create a new Codespace from this repository
+# 2. Wait for auto-build and auto-start (~1-2 minutes)
+# 3. Ports will auto-forward (8080 backend, 3000 frontend)
+# 4. Click on port 3000 link to access frontend
+```
+
+See [QUICK_START.md](QUICK_START.md) and [CODESPACES_SETUP.md](CODESPACES_SETUP.md) for detailed instructions.
+
+---
+
+## Run (Raspberry Pi Mode)
+
+### System Components
+
+#### Hardware
 - **Raspberry Pi 3**
 - **DS18B20 Temperature Sensor** (1-wire interface)
 - **MAX30102 Heart Rate Sensor** (I2C interface)
@@ -22,15 +122,15 @@ A Raspberry Pi 3-based system designed to help users maintain regular medication
 - **Push Button** (for medication confirmation)
 - **Resistors** (220Ω for LEDs, 4.7kΩ for DS18B20 pull-up, 10kΩ for button)
 
-### Software
+#### Software
 - Python 3.x
 - SQLite database
 - GPIO libraries for Raspberry Pi
 - Sensor libraries (Adafruit CircuitPython)
 
-## Installation
+### Installation
 
-### 1. Enable Required Interfaces
+#### 1. Enable Required Interfaces
 
 ```bash
 sudo raspi-config
@@ -40,7 +140,7 @@ Enable:
 - **I2C** (for MAX30102 heart rate sensor)
 - **1-Wire** (for DS18B20 temperature sensor)
 
-### 2. Install Dependencies
+#### 2. Install Dependencies
 
 ```bash
 sudo apt-get update
@@ -48,11 +148,11 @@ sudo apt-get install python3-pip python3-dev
 pip3 install -r requirements.txt
 ```
 
-### 3. Wire Components
+#### 3. Wire Components
 
-Follow the detailed wiring guide in `WIRING_GUIDE.md` or the PDF documentation.
+Connect hardware according to Pin Connections Summary below.
 
-### 4. Run the System
+#### 4. Run the System
 
 ```bash
 sudo python3 medhealth_system.py
@@ -60,9 +160,9 @@ sudo python3 medhealth_system.py
 
 **Note:** `sudo` is required for GPIO access.
 
-## System Workflow
+### System Workflow (Raspberry Pi)
 
-### Main Menu Options
+#### Main Menu Options
 
 1. **➕ Add Medication**: Schedule a new medication with time
 2. **📋 View Medications**: Display all active medications
@@ -76,7 +176,7 @@ sudo python3 medhealth_system.py
    - **Note:** Medication alarms work automatically and independently
 8. **🚪 Exit**: Safely shutdown system
 
-### Independent Medication Alarm System ⭐ NEW
+#### Independent Medication Alarm System
 
 **Alarms work automatically** - No need to start monitoring!
 - Runs in background thread when system starts
@@ -84,7 +184,7 @@ sudo python3 medhealth_system.py
 - 30-second time window (catches alarms even if check happens slightly before/after)
 - Uses PWM buzzer for clear, audible tones (2000 Hz)
 
-### Medication Alarm Flow (Automatic)
+#### Medication Alarm Flow (Automatic)
 
 1. **Automatic Detection:**
    - System checks every 5 seconds (high accuracy)
@@ -116,7 +216,7 @@ sudo python3 medhealth_system.py
    - Logged without vital signs
    - Alarm monitoring continues automatically
 
-### Health Monitoring (Option 7 - Optional)
+#### Health Monitoring (Option 7 - Optional)
 
 **Note:** This is separate from medication alarms. Alarms work independently.
 
@@ -136,7 +236,7 @@ When monitoring is active (Option 7):
   - Buzzer sounds
   - Console alert displayed
 
-## Pin Connections Summary
+### Pin Connections Summary
 
 | Component | Physical Pin | GPIO Pin |
 |-----------|--------------|----------|
@@ -149,19 +249,54 @@ When monitoring is active (Option 7):
 | LED Temp | 16 | GPIO 23 |
 | LED Button | 18 | GPIO 24 |
 
-## Database Schema
+---
 
-The system uses SQLite with three tables:
+## Data & Storage
+
+### Database
+
+Both modes use SQLite with the same schema:
 
 1. **medications**: Stores medication schedules
-2. **medication_logs**: Records medication intake with timestamps and vital signs
-3. **vitals_logs**: Stores standalone vital sign measurements
+   - id, name, schedule_time, active, created_at
 
-## Safety & Medical Disclaimer
+2. **medication_logs**: Records medication intake with timestamps and vital signs
+   - id, medication_id, medication_name, scheduled_time, actual_time, status, temperature, heart_rate, created_at
+
+3. **vitals_logs**: Stores standalone vital sign measurements
+   - id, temperature, heart_rate, status, created_at
+
+### API Data Format (Web Platform)
+
+- **Request/Response Format**: JSON
+- **Authentication**: Bearer token via `Authorization` header
+- **Sample Endpoints**:
+  - GET `/api/medications` - Retrieve all medications
+  - POST `/api/medications` - Create new medication
+  - POST `/api/vitals` - Log vital signs
+  - GET `/api/health` - Health check
+
+### Local Storage (Raspberry Pi)
+
+- SQLite database file: `medhealth.db`
+- JSON export via `add_sample_data.py` script for backups
+
+---
+
+## Security & Medical Disclaimer
 
 ⚠️ **IMPORTANT**: This system is designed for **educational and personal health awareness purposes only**. It does NOT provide medical diagnosis or treatment. Always consult healthcare professionals for medical advice.
 
-## Troubleshooting
+### Security Notes (Web Platform)
+
+- Database URL configured via environment variables (not hardcoded)
+- API key authentication required for all endpoints
+- `.env` file is gitignored and not committed to repository
+- Use `.env.example` as template for your configuration
+
+---
+
+## Troubleshooting (Raspberry Pi)
 
 ### Sensors Not Detected
 - Verify I2C and 1-Wire are enabled: `sudo raspi-config`
@@ -176,11 +311,24 @@ The system uses SQLite with three tables:
 - Verify pull-up configuration
 - Check button connections (GPIO to GND when pressed)
 
+---
+
+## Team Members
+
+- **Muhammad Ramis Chaudhary** (Project Owner) — 22401363
+- **Zainab Malik** — 22402832
+- **Batool Saad Jalal Qaba** — 22412036
+
+---
+
 ## License
 
-This project is for educational purposes as part of a Health Informatics course.
+This project is for educational purposes as part of a Health Informatics course at TH Deggendorf.
 
-## Author
+## Additional Resources
 
-Developed for Media Management project at TH Deggendorf.
+- [Quick Start Guide](QUICK_START.md) - Getting started with Docker/Codespaces
+- [Codespaces Setup](CODESPACES_SETUP.md) - Cloud development environment
+- [Requirements Verification](REQUIREMENTS_VERIFICATION.md) - Professor requirements compliance
+
 

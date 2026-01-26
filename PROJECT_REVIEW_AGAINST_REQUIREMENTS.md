@@ -1,4 +1,5 @@
-# Project Review: Innovation and Complexity Management Course Requirements
+# Project Review: Innovation and Complexity Management Course
+Requirements
 
 **Review Date**: January 26, 2026  
 **Source Repository**: https://github.com/dominikb1888/inco_new  

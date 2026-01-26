@@ -1,7 +1,8 @@
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use chrono::Utc;
+    use crate::models::{
+        MedicationLog, MedicationStatement, MedicationStatus, Observation, VitalsLog,
+    };
 
     #[test]
     fn test_medication_statement_from_db_log() {

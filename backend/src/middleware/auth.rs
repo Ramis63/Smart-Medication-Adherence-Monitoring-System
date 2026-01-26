@@ -11,8 +11,7 @@ use std::env;
 pub fn check_api_key(req: &ServiceRequest) -> bool {
     if let Some(auth_header) = req.headers().get("Authorization") {
         if let Ok(auth_str) = auth_header.to_str() {
-            if auth_str.starts_with("Bearer ") {
-                let token = &auth_str[7..];
+            if let Some(token) = auth_str.strip_prefix("Bearer ") {
                 let api_key = env::var("API_KEY").unwrap_or_else(|_| "dev-key-12345".to_string());
                 return token == api_key;
             }
@@ -26,8 +25,8 @@ pub fn check_api_key(req: &ServiceRequest) -> bool {
 pub fn get_api_key_from_request(req: &ServiceRequest) -> Option<String> {
     if let Some(auth_header) = req.headers().get("Authorization") {
         if let Ok(auth_str) = auth_header.to_str() {
-            if auth_str.starts_with("Bearer ") {
-                return Some(auth_str[7..].to_string());
+            if let Some(token) = auth_str.strip_prefix("Bearer ") {
+                return Some(token.to_string());
             }
         }
     }

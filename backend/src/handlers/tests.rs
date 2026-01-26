@@ -1,8 +1,8 @@
 #[cfg(test)]
 mod tests {
-    use super::{create_medication, create_vitals, get_medications};
     use crate::config::AppConfig;
     use crate::database;
+    use crate::handlers::{create_medication, create_vitals, get_medications};
     use actix_web::{test, web, App};
 
     fn get_test_config() -> AppConfig {

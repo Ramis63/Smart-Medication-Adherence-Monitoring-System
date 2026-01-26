@@ -4,7 +4,6 @@ use crate::models::{MedicationLog, MedicationStatement, Observation, VitalsLog};
 use actix::prelude::*;
 use actix_web::{web, Error, HttpRequest, HttpResponse};
 use actix_web_actors::ws;
-use serde_json;
 use std::time::{Duration, Instant};
 
 // WebSocket actor for medication updates
@@ -88,7 +87,7 @@ impl MedicationWebSocket {
 
                         if let Ok(logs) = logs {
                             let statements: Vec<MedicationStatement> = logs.iter()
-                                .map(|log| MedicationStatement::from_db_log(log))
+                                .map(MedicationStatement::from_db_log)
                                 .collect();
 
                             if let Ok(json) = serde_json::to_string(&statements) {

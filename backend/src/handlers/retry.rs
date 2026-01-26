@@ -4,6 +4,7 @@ use std::thread;
 use std::time::Duration;
 
 /// Retry a database operation with exponential backoff
+#[allow(dead_code)]
 pub fn retry_db_operation<F, T, E>(mut operation: F, max_retries: u32) -> Result<T, E>
 where
     F: FnMut() -> Result<T, E>,
@@ -28,6 +29,7 @@ where
 }
 
 /// Retry with custom delay
+#[allow(dead_code)]
 pub fn retry_with_delay<F, T, E>(
     mut operation: F,
     max_retries: u32,

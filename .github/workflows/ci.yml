@@ -2,62 +2,60 @@ name: CI
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [main, develop]
   pull_request:
-    branches: [ main, develop ]
+    branches: [main, develop]
 
 jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
-env:
-  DATABASE_URL: medhealth.db
+    env:
+      DATABASE_URL: medhealth.db
     steps:
-    - uses: actions/checkout@v3
-    
-    - name: Install Rust
-      uses: actions-rs/toolchain@v1
-      with:
-        toolchain: stable
-        override: true
-    
-    - name: Cache cargo dependencies
-      uses: actions/cache@v3
-      with:
-        path: |
-          ~/.cargo/bin/
-          ~/.cargo/registry/index/
-          ~/.cargo/registry/cache/
-          ~/.cargo/git/db/
-          backend/target/
-        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-    
-    - name: Build
-      working-directory: ./backend
-      run: cargo build --verbose
-    
-    - name: Run tests
-      working-directory: ./backend
-      run: cargo test --verbose
-    
-    - name: Check formatting
-      working-directory: ./backend
-      run: cargo fmt -- --check || true
+      - uses: actions/checkout@v3
+
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+
+      - name: Cache cargo dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            backend/target/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+
+      - name: Build
+        working-directory: ./backend
+        run: cargo build --verbose
+
+      - name: Run tests
+        working-directory: ./backend
+        run: cargo test --verbose
+
+      - name: Check formatting
+        working-directory: ./backend
+        run: cargo fmt -- --check || true
 
   lint:
     name: Lint
     runs-on: ubuntu-latest
-    
     steps:
-    - uses: actions/checkout@v3
-    
-    - name: Install Rust
-      uses: actions-rs/toolchain@v1
-      with:
-        toolchain: stable
-        components: rustfmt, clippy
-    
-    - name: Run clippy
-      working-directory: ./backend
-      run: cargo clippy -- -D warnings || true
+      - uses: actions/checkout@v3
 
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          components: rustfmt, clippy
+
+      - name: Run clippy
+        working-directory: ./backend
+        run: cargo clippy -- -D warnings || true

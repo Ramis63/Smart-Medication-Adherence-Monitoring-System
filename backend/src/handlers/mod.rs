@@ -5,6 +5,9 @@ use actix_web::{web, HttpResponse, Result};
 use log::error;
 use rusqlite::params;
 
+mod retry;
+pub use retry::*;
+
 #[cfg(test)]
 mod tests;
 
@@ -224,8 +227,10 @@ pub async fn get_medication_logs(
     })?;
 
     // Convert to FHIR MedicationStatement
-    let fhir_statements: Vec<MedicationStatement> =
-        logs.iter().map(MedicationStatement::from_db_log).collect();
+    let fhir_statements: Vec<MedicationStatement> = logs
+        .iter()
+        .map(|log| MedicationStatement::from_db_log(log))
+        .collect();
 
     Ok(HttpResponse::Ok().json(fhir_statements))
 }
@@ -272,8 +277,10 @@ pub async fn get_all_medication_logs(config: web::Data<AppConfig>) -> Result<Htt
     })?;
 
     // Convert to FHIR
-    let fhir_statements: Vec<MedicationStatement> =
-        logs.iter().map(MedicationStatement::from_db_log).collect();
+    let fhir_statements: Vec<MedicationStatement> = logs
+        .iter()
+        .map(|log| MedicationStatement::from_db_log(log))
+        .collect();
 
     Ok(HttpResponse::Ok().json(fhir_statements))
 }
@@ -333,21 +340,19 @@ fn validate_vitals(
     heart_rate: Option<i32>,
 ) -> Result<(), actix_web::Error> {
     if let Some(temp) = temperature {
-        if !(20.0..=45.0).contains(&temp) {
+        if temp < 20.0 || temp > 45.0 {
             return Err(actix_web::error::ErrorBadRequest(
                 "Temperature out of valid range (20-45°C)",
             ));
         }
     }
-
     if let Some(hr) = heart_rate {
-        if !(30..=250).contains(&hr) {
+        if hr < 30 || hr > 250 {
             return Err(actix_web::error::ErrorBadRequest(
                 "Heart rate out of valid range (30-250 bpm)",
             ));
         }
     }
-
     Ok(())
 }
 

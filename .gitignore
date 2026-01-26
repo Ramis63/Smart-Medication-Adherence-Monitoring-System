@@ -1,9 +1,35 @@
-# Rust build folder
-target/
-
-# Node packages
-node_modules/
-
-# Environment files (secrets)
+# Environment files
 .env
-*.env
+.env.local
+.env.*.local
+
+# Database files
+*.db
+*.db-shm
+*.db-wal
+backend/medhealth.db
+backend/medhealth.db-shm
+backend/medhealth.db-wal
+
+# Rust
+target/
+Cargo.lock
+**/*.rs.bk
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+debug.log
+
+# Docker volumes
+docker-volumes/

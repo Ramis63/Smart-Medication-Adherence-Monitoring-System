@@ -4,7 +4,8 @@ FROM rust:1.75 as builder
 WORKDIR /app
 
 # Copy dependency files
-COPY Cargo.toml Cargo.lock ./
+COPY Cargo.toml ./
+COPY Cargo.lock* ./
 
 # Create a dummy src to cache dependencies
 RUN mkdir src && echo "fn main() {}" > src/main.rs
@@ -23,6 +24,7 @@ FROM debian:bookworm-slim
 RUN apt-get update && apt-get install -y \
     ca-certificates \
     libssl3 \
+    wget \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
@@ -30,8 +32,8 @@ WORKDIR /app
 # Copy the binary from builder
 COPY --from=builder /app/target/release/medhealth-backend /app/medhealth-backend
 
-# Copy database file (if exists) or it will be created
-COPY medhealth.db* ./
+# Create data directory for database (will be mounted as volume)
+RUN mkdir -p /data && chmod 777 /data
 
 # Expose port
 EXPOSE 8080

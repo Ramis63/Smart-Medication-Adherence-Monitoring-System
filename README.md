@@ -313,34 +313,15 @@ Both modes use SQLite with the same schema:
 
 ---
 
-## Team Members
+## Team Members and Contributions
 
-- **Muhammad Ramis Chaudhary** (Project Owner) — 22401363
-- **Zainab Malik** — 22402832
-- **Batool Saad Jalal Qaba** — 22412036
-TEAM MEMBERS & CONTRIBUTIONS
+The project was collaboratively developed by a three-member team, with all members submitting the same GitHub repository and Media Management research paper, as required. Individual contributions are outlined below to support individual assessment.
 
-+--------------------------+----------------------+------------------------------------------------------------+
-| Name                     | Matriculation No.    | Responsibilities                                           |
-+--------------------------+----------------------+------------------------------------------------------------+
-| Muhammad Ramis Chaudhary | 22401363             | System architecture, backend development (Rust & Python),  |
-|                          |                      | database design (SQLite), CI/CD setup, GitHub Codespaces    |
-|                          |                      | configuration, test fixing, and integration of medication  |
-|                          |                      | scheduling and vital signs monitoring.                     |
-+--------------------------+----------------------+------------------------------------------------------------+
-| Batool Saad Jalal Qaba   | 22412036             | User interaction design, usability testing, documentation  |
-|                          |                      | support, validation of medication workflow, and            |
-|                          |                      | Contribution to the Media Management research paper.       |
-+--------------------------+----------------------+------------------------------------------------------------+
-| Zainab Malik             | 22402832             | Research and requirements analysis, contribution to the    |
-|                          |                      | Media Management research paper, system validation,        |
-|                          |                      | documentation, and project review support.                 |
-+--------------------------+----------------------+------------------------------------------------------------+
-
-Note:
-All team members submitted the same GitHub repository and the Media Management
-research paper. Individual responsibilities are listed above to support
-individual grading.
+| Name | Matriculation No. | Key Contributions |
+|------|-------------------|-------------------|
+| **Muhammad Ramis Chaudhary** | 22401363 | System architecture and backend development using Rust and Python; Database design using SQLite; Implementation of medication scheduling and vital signs monitoring; CI/CD pipeline configuration; GitHub Codespaces setup; Test debugging and fixing; System component integration |
+| **Batool Saad Jalal Qaba** | 22412036 | User interaction design and usability testing; Documentation support; Medication workflow validation; System verification; Media Management research paper contribution |
+| **Zainab Malik** | 22402832 | Research and requirements analysis; Media Management research paper participation; System validation; Documentation support; Overall project review and quality assurance |
 
 ---
 

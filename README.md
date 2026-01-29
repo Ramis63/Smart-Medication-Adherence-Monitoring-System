@@ -4,6 +4,41 @@ A comprehensive health monitoring and medication adherence system available in t
 - **Raspberry Pi Mode**: Local Python application with sensors and GPIO
 - **Web Platform Mode**: Docker-based web application with Rust backend, React frontend, and SQLite
 
+## Table of Contents
+
+- [Team Members and Contributions](#team-members-and-contributions)
+- [Project Overview](#project-overview)
+  - [Two Operating Modes](#two-operating-modes)
+- [Repository Structure](#repository-structure)
+- [Features](#features)
+- [Run (Web Mode)](#run-web-mode)
+  - [Quick Start (Local Docker)](#quick-start-local-docker)
+  - [Quick Start (GitHub Codespaces)](#quick-start-github-codespaces)
+- [Run (Raspberry Pi Mode)](#run-raspberry-pi-mode)
+  - [System Components](#system-components)
+  - [Installation](#installation)
+  - [System Workflow](#system-workflow-raspberry-pi)
+  - [Pin Connections Summary](#pin-connections-summary)
+- [Data & Storage](#data--storage)
+- [Security & Medical Disclaimer](#security--medical-disclaimer)
+- [Troubleshooting (Raspberry Pi)](#troubleshooting-raspberry-pi)
+- [License](#license)
+- [Additional Resources](#additional-resources)
+
+---
+
+## Team Members and Contributions
+
+The project was collaboratively developed by a three-member team, with all members submitting the same GitHub repository and Media Management research paper, as required. Individual contributions are outlined below to support individual assessment.
+
+| Name | Matriculation No. | Key Contributions |
+|------|-------------------|-------------------|
+| **Muhammad Ramis Chaudhary** | 22401363 | System architecture and backend development using Rust and Python; Database design using SQLite; Implementation of medication scheduling and vital signs monitoring; CI/CD pipeline configuration; GitHub Codespaces setup; Test debugging and fixing; System component integration |
+| **Batool Saad Jalal Qaba** | 22412036 | User interaction design and usability testing; Documentation support; Medication workflow validation; System verification; Media Management research paper contribution |
+| **Zainab Malik** | 22402832 | Research and requirements analysis; Media Management research paper participation; System validation; Documentation support; Overall project review and quality assurance |
+
+---
+
 ## Project Overview
 
 This system helps users maintain regular medication intake while monitoring vital signs. The repository contains both a Raspberry Pi implementation (local hardware-based) and a modern web platform (accessible via browser or GitHub Codespaces).
@@ -310,18 +345,6 @@ Both modes use SQLite with the same schema:
 ### Button Not Responding
 - Verify pull-up configuration
 - Check button connections (GPIO to GND when pressed)
-
----
-
-## Team Members and Contributions
-
-The project was collaboratively developed by a three-member team, with all members submitting the same GitHub repository and Media Management research paper, as required. Individual contributions are outlined below to support individual assessment.
-
-| Name | Matriculation No. | Key Contributions |
-|------|-------------------|-------------------|
-| **Muhammad Ramis Chaudhary** | 22401363 | System architecture and backend development using Rust and Python; Database design using SQLite; Implementation of medication scheduling and vital signs monitoring; CI/CD pipeline configuration; GitHub Codespaces setup; Test debugging and fixing; System component integration |
-| **Batool Saad Jalal Qaba** | 22412036 | User interaction design and usability testing; Documentation support; Medication workflow validation; System verification; Media Management research paper contribution |
-| **Zainab Malik** | 22402832 | Research and requirements analysis; Media Management research paper participation; System validation; Documentation support; Overall project review and quality assurance |
 
 ---
 

@@ -318,7 +318,10 @@ Both modes use SQLite with the same schema:
 - **Muhammad Ramis Chaudhary** (Project Owner) — 22401363
 - **Zainab Malik** — 22402832
 - **Batool Saad Jalal Qaba** — 22412036
-
+Team Member	Matriculation Number	Role & Responsibilities
+Muhammad Ramis Chaudhary	22401363	System architecture, backend development (Rust & Python), database design (SQLite), CI/CD setup, GitHub Codespaces configuration, test fixing, and integration of medication scheduling and vital signs monitoring
+Batool Saad Jalal Qaba	22412036	User interaction design, usability testing, documentation support, validation of medication workflow, and contribution to the Media Management research paper
+Zainab Malik	22402832	Research and requirements analysis, contribution to the Media Management research paper, system validation, documentation, and project review support
 ---
 
 ## License
